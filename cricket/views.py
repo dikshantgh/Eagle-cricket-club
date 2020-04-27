@@ -15,7 +15,7 @@ class HomeListView(ListView):
 class PlayerDetailView(LoginRequiredMixin, DetailView):
     model = Kheladi
     template_name = 'cricket/player_detail.html'
-    # login_url = 'login'
+    login_url = 'login'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
