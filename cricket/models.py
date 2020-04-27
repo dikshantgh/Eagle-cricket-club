@@ -26,7 +26,7 @@ class Kheladi(models.Model):
     last_name = models.CharField(max_length=50)
     bio = models.TextField()
     favourite_cricketer = models.CharField(max_length=30)
-    dp = models.ImageField(verbose_name='profile picture', upload_to='profile/', blank=True, null=True)
+    dp = models.ImageField(verbose_name='profile picture', upload_to='profile/', default='profile/default_image.jpg')
     country = models.CharField(max_length=7)
     slug = models.SlugField(blank=True, null=True, editable=False)
     uuid = models.UUIDField(blank=True, null=True, default=uuid.uuid4)
