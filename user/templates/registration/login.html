@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Login |{{ block.super }}{% endblock title %}</title>
+</head>
+<body><input type="email" name="email"><input type="submit" value="Subscribe">-->
+{% block header %}
+<h3>Login</h3><hr>
+<div class="d-flex justify-content-center">
+    <form class="subscribe-form" action="" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="form-check">
+            <input type="checkbox" required="True" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">I accept all the <a href="https://docs.google.com/document/d/1OCQVYKPpLI6c4g_Lr8L77dkuLdy6xIb5ByQDNQ9ogQw/edit?usp=sharing" target="_blank">terms and conditions</a> of Eagle Cricket Club</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
+{% endblock header %}
+
+{% block about %}
+{% endblock about %}
+
+
+</body>
+</html>

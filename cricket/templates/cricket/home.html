@@ -1,0 +1,61 @@
+{% extends '_base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {{ block.super }} {% endblock title %}</title>
+</head>
+<body>
+
+{% block header %}
+{% if user.is_authenticated %}
+<h5>Welcome {{ user }} !! | <a href="{% url 'logout' %}">Logout</a> </h5>
+<h2>List of Players</h2>
+    {% for player in kheladi_list %}
+<h4><a class="text-white" href="{{ player.get_absolute_url }}"><strong>{{ player.first_name|linebreaks }}</strong></a></h4>
+    {% endfor %}
+
+{% else %}
+
+      <div class="countdown d-flex justify-content-center" data-count="2020/12/3">
+        <div>
+          <h3>150</h3>
+          <h4>Matches</h4>
+        </div>
+        <div>
+          <h3>90</h3>
+          <h4>Won</h4>
+        </div>
+        <div>
+          <h3>58</h3>
+          <h4>Lost</h4>
+        </div>
+        <div>
+          <h3>2</h3>
+          <h4>Draw</h4>
+        </div>
+      </div>
+
+<!--      <div class="subscribe">-->
+<!--        <h4>Subscribe now to get the latest updates!</h4>-->
+<!--        <form action="forms/notify.php" method="post" role="form" class="php-email-form">-->
+<!--          <div class="subscribe-form">-->
+<!--            <input type="email" name="email"><input type="submit" value="Subscribe">-->
+<!--          </div>-->
+<!--          <div class="mt-2">-->
+<!--            <div class="loading">Loading</div>-->
+<!--            <div class="error-message"></div>-->
+<!--            <div class="sent-message">Your notification request was sent. Thank you!</div>-->
+<!--          </div>-->
+<!--        </form>-->
+<!--      </div>-->
+
+      <div class="social-links text-center" >
+        <a href="{% url 'login' %}" class="google-plus" ><i class="">Login</i></a>
+
+      </div>
+{% endif %}
+{% endblock header %}
+
+</body>
+</html>

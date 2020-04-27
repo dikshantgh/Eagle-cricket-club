@@ -1,0 +1,156 @@
+{% extends '_base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {{ kheladi.first_name }} | {{ block.super }}{% endblock title %}</title>
+</head>
+<body>
+{% block header %}
+
+<div class="col-md-2 px-0">
+    <img class="img-fluid" src="{{ kheladi.dp.url }}" alt="{{ kheladi.first_name }}">
+</div>
+
+<!--<div card>-->
+<!--    <div class="card-body">-->
+<!--        <img src="{{ kheladi.dp.url }}" alt="{{ kheladi.first_name }}">-->
+<!--    </div>-->
+<!--</div>-->
+    <table class="table text-white">
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                {{ kheladi.first_name }} {{ kheladi.last_name }}
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Bio
+            </td>
+            <td class="small text-justify">
+                {{ kheladi.bio }}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Country
+            </td>
+            <td>
+                {{ kheladi.country }}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Date of Birth
+            </td>
+            <td>
+                {{ kheladi.dob }}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Age
+            </td>
+            <td>
+                {{ kheladi.age }}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Favourite cricketer
+            </td>
+            <td>
+                {{ kheladi.favourite_cricketer }}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Height
+            </td>
+            <td>
+                {{ kheladi.height }}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Role
+            </td>
+            <td>
+                {{ kheladi.role }}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Highest score
+            </td>
+            <td>
+                {{ kheladi.highest_score }}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Highest wicket
+            </td>
+            <td>
+                {{ kheladi.highest_wicket }}
+            </td>
+        </tr>
+
+
+
+        <tr>
+            <td>
+                Batting style
+            </td>
+            <td>
+                {{ kheladi.batting_style }}
+            </td>
+        </tr>
+
+
+
+        <tr>
+            <td>
+                Bowling style
+            </td>
+            <td>
+                {{ kheladi.bowling_style }}
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Contact
+            </td>
+            <td>
+                {{ kheladi.contact }}
+            </td>
+        </tr>
+
+    </table>
+{% endblock header %}
+
+{% block about %}
+{% endblock about %}
+</body>
+</html>
