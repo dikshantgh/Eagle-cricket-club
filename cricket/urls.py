@@ -8,4 +8,5 @@ app_name='cricket'
 urlpatterns = [
     path('', views.HomeListView.as_view(), name='home'),
     path('player-detail/<slug:slug>/<uuid:uuid>/', views.PlayerDetailView.as_view(), name='player_detail'),
+    path('player-update/<slug:slug>/<uuid:uuid>/', views.PlayerUpdateView.as_view(), name='player_update'),
 ]

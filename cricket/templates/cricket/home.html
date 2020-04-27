@@ -9,12 +9,13 @@
 
 {% block header %}
 {% if user.is_authenticated %}
-<h5>Welcome {{ user }} !! | <a href="{% url 'logout' %}">Logout</a> </h5>
+<h5>Welcome {{ user|title }} !! | <a href="{% url 'logout' %}">Logout</a> | <a href="{% url 'password_change' %}">Update Password</a> </h5><hr>
 <h2>List of Players</h2>
     {% for player in kheladi_list %}
 <h4><a class="text-white" href="{{ player.get_absolute_url }}"><strong>{{ player.first_name|linebreaks }}</strong></a></h4>
     {% endfor %}
-
+<h4>LawaGoli</h4>
+<a href="">Sanam Paudel</a>
 {% else %}
 
       <div class="countdown d-flex justify-content-center" data-count="2020/12/3">

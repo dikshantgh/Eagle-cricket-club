@@ -146,8 +146,12 @@
                 {{ kheladi.contact }}
             </td>
         </tr>
-
     </table>
+{% if current_user == updating_user %}
+<h3>
+<a class="badge badge-danger"  href="{% url 'cricket:player_update' kheladi.slug kheladi.uuid %}">Update</a>
+</h3>
+{% endif %}
 {% endblock header %}
 
 {% block about %}

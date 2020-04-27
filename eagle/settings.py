@@ -30,6 +30,10 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # local app
+    'cricket.apps.CricketConfig',
+    'user.apps.UserConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,10 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic', # third party
     'django.contrib.staticfiles',
-
-    # local app
-    'cricket.apps.CricketConfig',
-    'user.apps.UserConfig',
 
     # third party
     'crispy_forms',
