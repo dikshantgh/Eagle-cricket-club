@@ -9,7 +9,7 @@
 <body>
 {% block header %}
 <div class="d-flex justify-content-center">
-    <form class="subscribe-form font-weight-bold" action="" method="POST">
+    <form class="subscribe-form font-weight-bold" enctype="multipart/form-data" action="" method="POST">
         {% csrf_token %}
         {{ form|crispy }}
         <br>
