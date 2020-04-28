@@ -37,3 +37,6 @@ class PlayerUpdateView(LoginRequiredMixin, UpdateView):
         else:
             raise PermissionDenied
 
+#
+# class GroundTemplateView(TemplateView):
+#     template_name = 'cricket/ground.html'
