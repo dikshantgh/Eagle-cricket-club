@@ -7,14 +7,28 @@
 </head>
 <body>
 {% block header %}
-<!-- Insert this code before your </body> tag -->
-<script src="//static.miniclipcdn.com/js/game-embed.js"></script>
 
-<!-- Place this code where you'd like the game to appear -->
-<div class="miniclip-game-embed" data-game-name="short-ride" data-theme="5" data-width="800" data-height="480" data-language="en"><a href="https://www.miniclip.com/games/short-ride/">Play Short Ride</a></div>
-<p style="text-align:center;">
-    <p> Enjoy this amazing game . Only for eagle cricket team !!!</p>
-</p>
+<!-- Play.iDevGames.co.uk Responsive Embed Code for ZERO OUT #1 -->
+<script>
+    window.onload = function() {
+        var thegamelink = "https://play.idevgames.co.uk/embed/zero-out-1";
+        var ref = document.referrer;
+        var theurl = document.referrer;
+        ref = ref.substring(ref.indexOf("://") + 3);
+        ref = ref.split("/")[0];
+        if(ref == "my-ga.me"){
+        theurl = "true"
+        } else {
+            theurl = "false"
+        }
+        document.getElementById("embededGame").src = thegamelink+"/"+theurl;
+    }
+</script>
+<div class="container" style="position: relative;height: 0;overflow: hidden;padding-bottom: 56.25%;">
+    <iframe id="embededGame" src="https://play.idevgames.co.uk/embed/zero-out-1" scrolling="no" seamless="seamless" frameBorder="0" style="position: absolute;top:0;left: 0;width: 100%;height: 100%;">Browser not compatible.</iframe>
+</div>
+<!-- End Embed Code -->
+
 {% endblock header %}
 
 {% block about %}
