@@ -80,13 +80,36 @@ WSGI_APPLICATION = 'eagle.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+# sqlite3
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+# dj databse
+# import dj_database_url
+#
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+
+#
+# postgres
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'xdtrclmu',
+        'USER': 'xdtrclmu',
+        'PASSWORD': 'CfcVFdtFD-6VuUC4SgDCLST2Sg2OhbBm',
+        'HOST': 'drona.db.elephantsql.com',
+        'PORT': '5432',
     }
 }
+
+# heroku postgres
+# DATABASE_URL=$(heroku config:get DATABASE_URL -a your-app) your_process
 
 
 # Password validation

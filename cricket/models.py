@@ -22,23 +22,23 @@ class Kheladi(models.Model):
         ('left arm spin', 'left arm spin'),
         ('right arm spin', 'right arm spin'),
     )
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    bio = models.TextField()
-    favourite_cricketer = models.CharField(max_length=30)
-    dp = models.ImageField(verbose_name='profile picture', upload_to='profile/', default='profile/default_image.jpg')
-    country = models.CharField(max_length=7)
-    slug = models.SlugField(blank=True, null=True, editable=False)
-    uuid = models.UUIDField(blank=True, null=True, default=uuid.uuid4)
-    dob = models.DateField(verbose_name='Date of Birth', default=timezone.now, help_text='Enter in format YYYY-MM-DD')
-    age = models.PositiveIntegerField(blank=True)
-    height = models.CharField(default=0, max_length=10)
-    role = models.CharField(choices=ROLE_CHOICES, max_length=20, default='all rounder')
-    contact = models.CharField(max_length=30, blank=True, null=True)
-    batting_style = models.CharField(choices=BATTING_CHOICES, max_length=20, default='right hand bat')
-    bowling_style = models.CharField(choices=BOWLING_CHOICES, max_length=20, default='right arm bowl')
-    highest_score = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(200)])
-    highest_wicket = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(10)])
+    first_name = models.CharField(max_length=50, db_index=True)
+    last_name = models.CharField(max_length=50, )
+    bio = models.TextField(db_index=True)
+    favourite_cricketer = models.CharField(max_length=30, db_index=True)
+    dp = models.ImageField(verbose_name='profile picture', upload_to='profile/', default='profile/default_image.jpg', db_index=True)
+    country = models.CharField(max_length=7, db_index=True)
+    slug = models.SlugField(blank=True, null=True, editable=False, db_index=True)
+    uuid = models.UUIDField(blank=True, null=True, default=uuid.uuid4, db_index=True)
+    dob = models.DateField(verbose_name='Date of Birth', default=timezone.now, help_text='Enter in format YYYY-MM-DD', db_index=True)
+    age = models.PositiveIntegerField(blank=True, db_index=True)
+    height = models.CharField(default=0, max_length=10, db_index=True)
+    role = models.CharField(choices=ROLE_CHOICES, max_length=20, default='all rounder', db_index=True)
+    contact = models.CharField(max_length=30, blank=True, null=True, db_index=True)
+    batting_style = models.CharField(choices=BATTING_CHOICES, max_length=20, default='right hand bat', db_index=True)
+    bowling_style = models.CharField(choices=BOWLING_CHOICES, max_length=20, default='right arm bowl', db_index=True)
+    highest_score = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(200)], db_index=True)
+    highest_wicket = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(10)], db_index=True)
 
     def __str__(self):
         return self.first_name
@@ -50,7 +50,6 @@ class Kheladi(models.Model):
         if not self.slug:
             self.slug = slugify(f'{self.first_name} {self.last_name}')
         super(Kheladi, self).save(**kwargs)
-
 
     def get_absolute_url(self):
         return reverse('cricket:player_detail', kwargs={'slug': self.slug, 'uuid': self.uuid})
