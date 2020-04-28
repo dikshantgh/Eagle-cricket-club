@@ -11,4 +11,5 @@ urlpatterns = [
     path('player-detail/<slug:slug>/<uuid:uuid>/', views.PlayerDetailView.as_view(), name='player_detail'),
     path('player-update/<slug:slug>/<uuid:uuid>/', views.PlayerUpdateView.as_view(), name='player_update'),
     path('ground/', TemplateView.as_view(template_name='cricket/ground.html'), name='ground'),
+    path('game/', TemplateView.as_view(template_name='cricket/game.html'), name='game'),
 ]
