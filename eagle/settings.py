@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import cloudinary
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -33,6 +35,7 @@ INSTALLED_APPS = [
     # local app
     'cricket.apps.CricketConfig',
     'user.apps.UserConfig',
+    'chat.apps.ChatConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,14 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'whitenoise.runserver_nostatic', # third party
+    'cloudinary_storage', # third party
     'django.contrib.staticfiles',
 
     # third party
     'crispy_forms',
-    # 'django_private_chat',
-
-
+    'cloudinary',
 ]
+
 
 ## chat
 # CHAT_WS_SERVER_HOST = 'localhost'
@@ -171,3 +174,19 @@ AUTH_USER_MODEL = 'user.Player'
 # login and logout
 LOGIN_REDIRECT_URL = 'cricket:home'
 LOGOUT_REDIRECT_URL = 'cricket:home'
+
+# cloud
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'dyixiintg',
+#     'API_KEY': '683594715654573',
+#     'API_SECRET': '_8MuhosU6UWw1wF22oBwa4p3y3w',
+# }
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+cloudinary.config(
+    cloud_name = 'dyixiintg',
+    api_key = '683594715654573',
+    api_secret = '_8MuhosU6UWw1wF22oBwa4p3y3w'
+)

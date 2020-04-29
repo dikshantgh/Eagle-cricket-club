@@ -1,9 +1,19 @@
+from cloudinary.forms import CloudinaryFileField
 from django import forms
 
 from cricket.models import Kheladi
 
 
 class PlayerForm(forms.ModelForm):
+    # dp = CloudinaryFileField(
+    #     options={
+    #         'crop': 'thumb',
+    #         'width': 200,
+    #         'height': 700,
+    #         'folder': 'avatars'
+    #     }
+    # )
+
     class Meta:
         model = Kheladi
         fields = ['first_name', 'last_name', 'bio', 'dob', 'dp', 'country', 'height', 'role',

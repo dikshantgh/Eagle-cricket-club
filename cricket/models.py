@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 import uuid
+from cloudinary.models import CloudinaryField
 
 
 class Kheladi(models.Model):
@@ -26,7 +27,7 @@ class Kheladi(models.Model):
     last_name = models.CharField(max_length=50, )
     bio = models.TextField(db_index=True)
     favourite_cricketer = models.CharField(max_length=30, db_index=True)
-    dp = models.ImageField(verbose_name='profile picture', upload_to='profile/', default='profile/default_image.jpg', db_index=True)
+    dp = CloudinaryField(verbose_name='profile picture', db_index=True)
     country = models.CharField(max_length=7, db_index=True)
     slug = models.SlugField(blank=True, null=True, editable=False, db_index=True)
     uuid = models.UUIDField(blank=True, null=True, default=uuid.uuid4, db_index=True)

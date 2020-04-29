@@ -22,6 +22,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('django.contrib.auth.urls')),
     path('', include('cricket.urls')),
-    # path('', include(django_private_chat_urls))
-
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

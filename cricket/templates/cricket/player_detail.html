@@ -1,5 +1,5 @@
 {% extends '_base.html' %}
-
+{% load cloudinary %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +10,7 @@
 {% block header %}
 
 <div class="col-md-2 px-0">
-    <img class="img-fluid" src="{{ kheladi.dp.url }}" alt="{{ kheladi.first_name }}">
+    {% cloudinary kheladi.dp.public_id class="img-responsive rounded" width="200" height="200" %}
 </div>
 
 <!--<div card>-->
