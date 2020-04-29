@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'whitenoise.runserver_nostatic', # third party
-    'cloudinary_storage', # third party
+    # 'cloudinary_storage', # third party
     'django.contrib.staticfiles',
 
     # third party
@@ -182,7 +182,7 @@ LOGOUT_REDIRECT_URL = 'cricket:home'
 #     'API_SECRET': '_8MuhosU6UWw1wF22oBwa4p3y3w',
 # }
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 cloudinary.config(
