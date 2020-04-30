@@ -42,6 +42,7 @@ class GangShareCreateView(LoginRequiredMixin,CreateView):
     model = Gang
     template_name = 'cricket/gang_share.html'
     form_class = GangForm
+    login_url = 'login'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
