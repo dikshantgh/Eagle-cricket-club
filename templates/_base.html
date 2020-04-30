@@ -48,13 +48,13 @@
     </div>
   </header><!-- End #header -->
 
-{% block about %}
+
   <main id="main">
 
     <!-- ======= About Us Section ======= -->
     <section id="about" class="about">
       <div class="container">
-
+{% block about %}
         <div class="section-title">
           <h2>About Us</h2>
           <p>The original and the oldest cricket club of Campus tole with impeccable records. The team was formed in 2000 A.D. </p>
@@ -76,6 +76,25 @@
             <h4 class="title"><a href="{% url 'cricket:ground' %}">Home Ground</a></h4>
             <p class="description">Eagle Cricket Ground. Campus Tole, Barewa</p>
           </div>
+{% if user.is_authenticated %}
+           <div class="col-lg-4 col-md-6 icon-box">
+            <div class="icon"><i class="icofont-ebook"></i></div>
+            <h4 class="title"><a href="{% url 'cricket:gang_share' %}">Gang Share</a></h4>
+            <p class="description">Share all your thoughts with others.</p>
+          </div>
+
+          <div class="col-lg-4 col-md-6 icon-box">
+            <div class="icon"><i class="icofont-edit"></i></div>
+            <h4 class="title"><a href="">Chat</a></h4>
+            <p class="description">Coming Soon !!!</p>
+          </div>
+
+          <div class="col-lg-4 col-md-6 icon-box">
+            <div class="icon"><i class="icofont-file-video"></i></div>
+            <h4 class="title"><a href="">Video Chat</a></h4>
+            <p class="description">Coming Soon !!!</p>
+          </div>
+{% endif %}
         </div>
 
       </div>
@@ -158,12 +177,12 @@
 <!--          </div>-->
 
         </div>
-
+{% endblock contact %}
       </div>
     </section><!-- End Contact Us Section -->
 
   </main><!-- End #main -->
-{% endblock contact %}
+
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">

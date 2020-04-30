@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.urls import reverse
@@ -59,9 +60,15 @@ class Kheladi(models.Model):
         verbose_name_plural = 'Kheladi'
         ordering = ['first_name']
 
-# class Match(models.Model):
-#     odi_played =
-#     test_played =
-#     t20_played =
 
+class Gang(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_index=True)
+    timestamp = models.DateTimeField(auto_now_add=True, db_index=True)
+    in_mind = models.TextField(verbose_name='Whats in your mind?', db_index=True)
+
+    def __str__(self):
+        return self.author.username
+
+    def get_absolute_url(self):
+        return reverse('cricket:gang_share')
 

@@ -1,0 +1,43 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Gang Share | {{ block.super }}{% endblock title %}</title>
+</head>
+<body>
+{% block header %}
+ <div class="form-group">
+  <label for="comment">Gang mind</label>
+  <textarea class="form-control" readonly="readonly" rows="10" cols="50" id="comment">
+      {% for mind in queryset %}
+      {{ mind.author|title }}| {{ mind.timestamp }}
+        {{ mind.in_mind }}
+      {% endfor %}
+  </textarea>
+</div>
+<script>
+    var textarea = document.getElementById('comment');
+    setInterval(function(){
+    textarea.scrollTop = textarea.scrollHeight;
+}, 1000);
+</script>
+{% endblock header %}
+
+{% block about %}
+
+<div class="form-group justify-content-center">
+    <form class="subscribe-form font-weight-bold" action="" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+            <button type="submit" class="btn btn-primary">Send</button>
+
+    </form>
+</div>
+      </div>
+ </section>
+{% endblock about %}
+</body>
+</html>

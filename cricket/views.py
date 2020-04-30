@@ -1,10 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView, ListView, DetailView, UpdateView
+from django.views.generic import TemplateView, ListView, DetailView, UpdateView, CreateView
 
-from cricket.forms import PlayerForm
-from cricket.models import Kheladi
+from cricket.forms import PlayerForm, GangForm
+from cricket.models import Kheladi, Gang
 
 
 class HomeListView(ListView):
@@ -37,6 +37,17 @@ class PlayerUpdateView(LoginRequiredMixin, UpdateView):
         else:
             raise PermissionDenied
 
-#
-# class GroundTemplateView(TemplateView):
-#     template_name = 'cricket/ground.html'
+
+class GangShareCreateView(CreateView):
+    model = Gang
+    template_name = 'cricket/gang_share.html'
+    form_class = GangForm
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super(GangShareCreateView, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(GangShareCreateView, self).get_context_data(**kwargs)
+        context['queryset'] = Gang.objects.all()
+        return context
