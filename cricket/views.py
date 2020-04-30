@@ -38,7 +38,7 @@ class PlayerUpdateView(LoginRequiredMixin, UpdateView):
             raise PermissionDenied
 
 
-class GangShareCreateView(CreateView):
+class GangShareCreateView(LoginRequiredMixin,CreateView):
     model = Gang
     template_name = 'cricket/gang_share.html'
     form_class = GangForm
