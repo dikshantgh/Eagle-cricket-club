@@ -31,6 +31,7 @@ class BlogDetailView(ModelFormMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['kheladi_list'] = Kheladi.objects.all()
         context['current_user'] = str(self.request.user).lower()
         context['updating_user'] = str(get_object_or_404(Blog, uuid=self.kwargs['uuid']).author).lower()
         return context

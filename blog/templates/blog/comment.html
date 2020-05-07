@@ -1,5 +1,6 @@
 {% load humanize %}
 {% load crispy_forms_tags %}
+{% load cloudinary %}
 <style rel="stylesheet">
 
 .detailBox {
@@ -81,7 +82,11 @@
             {% for comment in blog.blog_comment.all %}
             <li>
                 <div class="commenterImage">
-                  <img src="http://placekitten.com/50/50" />
+                    {% for kheladi in kheladi_list %}
+                        {% if kheladi.first_name|lower == comment.commented_by.username %}
+                                {% cloudinary kheladi.dp.public_id class="img-responsive rounded-circle z-depth-2" width="80" height="60" %}
+                        {% endif %}
+                    {% endfor %}
                 </div>
                 <div class="commentText">
                     <em class="text-dark"><strong>{{ comment.commented_by|title }}</strong></em>
