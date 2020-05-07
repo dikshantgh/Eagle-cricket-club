@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '(1*jmg&-(cjqlo2&dhnnz4zymiehsx^)1064d&aca6mkqms1%+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     # local app
     'cricket.apps.CricketConfig',
     'user.apps.UserConfig',
-    'chat.apps.ChatConfig',
+    'blog.apps.BlogConfig',
+    # 'chat.apps.ChatConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,17 +46,17 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic', # third party
     # 'cloudinary_storage', # third party
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 
     # third party
     'crispy_forms',
     'cloudinary',
+    'taggit',
+    # 'channels',
+
 ]
 
-
-## chat
-# CHAT_WS_SERVER_HOST = 'localhost'
-# CHAT_WS_SERVER_PORT = 5002
-# CHAT_WS_SERVER_PROTOCOL = 'ws'
+# Channels
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -174,19 +175,14 @@ AUTH_USER_MODEL = 'user.Player'
 # login and logout
 LOGIN_REDIRECT_URL = 'cricket:home'
 LOGOUT_REDIRECT_URL = 'cricket:home'
-
-# cloud
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': 'dyixiintg',
-#     'API_KEY': '683594715654573',
-#     'API_SECRET': '_8MuhosU6UWw1wF22oBwa4p3y3w',
-# }
-
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-
+LOGIN_URL = 'login'
+# cloudinary
 cloudinary.config(
     cloud_name = 'dyixiintg',
     api_key = '683594715654573',
     api_secret = '_8MuhosU6UWw1wF22oBwa4p3y3w'
 )
+
+
+# taggit
+TAGGIT_CASE_INSENSITIVE = True

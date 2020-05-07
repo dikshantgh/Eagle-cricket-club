@@ -1,0 +1,105 @@
+{% load humanize %}
+{% load crispy_forms_tags %}
+<style rel="stylesheet">
+
+.detailBox {
+    width:400px;
+    border:1px solid #bbb;
+    margin:50px;
+}
+.titleBox {
+    background-color:#fdfdfd;
+    padding:10px;
+}
+.titleBox label{
+  color:#444;
+  margin:0;
+  display:inline-block;
+}
+
+.commentBox {
+    padding:10px;
+    border-top:1px dotted #bbb;
+}
+.commentBox .form-group:first-child, .actionBox .form-group:first-child {
+    width:80%;
+}
+.commentBox .form-group:nth-child(2), .actionBox .form-group:nth-child(2) {
+    width:78%;
+}
+.actionBox .form-group * {
+    width:100%;
+}
+.taskDescription {
+    margin-top:10px 0;
+}
+.commentList {
+    padding:0;
+    list-style:none;
+    max-height:200px;
+    overflow:auto;
+}
+.commentList li {
+    margin:0;
+    margin-top:10px;
+}
+.commentList li > div {
+    display:table-cell;
+}
+.commenterImage {
+    width:30px;
+    margin-right:5px;
+    height:100%;
+    float:left;
+}
+.commenterImage img {
+    width:100%;
+    border-radius:50%;
+}
+.commentText p {
+    margin:0;
+}
+.sub-text {
+    color:#aaa;
+    font-family:verdana;
+    font-size:11px;
+}
+.actionBox {
+    border-top:1px dotted #bbb;
+    padding:10px;
+}
+</style>
+<div class="detailBox">
+    <div class="titleBox">
+      <label>Comment Area | Total Comment{{ blog.blog_comment.all|pluralize }}: {{ blog.blog_comment.all|length }}</label>
+    </div>
+    <div class="commentBox">
+        <p class="taskDescription">Your comment matters. We welcome suggestions.</p>
+    </div>
+    <div class="actionBox">
+        <ul class="commentList">
+            {% for comment in blog.blog_comment.all %}
+            <li>
+                <div class="commenterImage">
+                  <img src="http://placekitten.com/50/50" />
+                </div>
+                <div class="commentText">
+                    <em class="text-dark"><strong>{{ comment.commented_by|title }}</strong></em>
+                    <p class="text-justify">{{ comment.comment_text }}</p> <span class="date sub-text">{{ comment.commented_date|naturaltime }}</span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <form class="form-inline" role="form" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <input class="form-control" type="text" name="{{ form.comment_text.name }}" placeholder="Your comments" required="required"/>
+                <em><small>{{ form.comment_text.help_text }}</small></em>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+

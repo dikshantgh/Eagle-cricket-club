@@ -46,7 +46,6 @@ class Kheladi(models.Model):
         return self.first_name
 
     def save(self, **kwargs):
-        print()
         if not self.age:
             self.age = int((timezone.now().date() - self.dob).days / 365)
         if not self.slug:

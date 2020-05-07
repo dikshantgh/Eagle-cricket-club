@@ -1,0 +1,43 @@
+{% extends '_base.html' %}
+{% load cloudinary %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}  Blog | {{ block.super }} {% endblock title %}</title>
+</head>
+<body>
+
+{% block header %}
+<div class="d-flex justify-content-center">
+    <form class="subscribe-form" action="{% url 'blog:search_result' %}" method="GET">
+    <div class="icon"><i class="icofont-ui-search"></i>
+    <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search using title or author.." aria-label="Search">
+    </div>
+</form>
+</div>
+<hr>
+<h3 class="">
+    <a class="badge badge-danger"  href="{% url 'blog:blog_create' %}">Create blog</a>
+</h3>
+<hr>
+{% for blog in blog_list %}
+<div class="card hover-shadow" itemscope="" itemtype="" style="width: 25rem;">
+    <div class="card-img-top">
+        {% cloudinary blog.display_picture.public_id class="img-responsive rounded" width="398" height="200" %}
+    </div>
+    <div class="card-body">
+        <a href="{{ blog.get_absolute_url }}"> <h4 class="card-text"><strong>{{ blog.title|title }}</strong></h4></a>
+        <p class="card-text font-italic text-secondary blockquote-footer">Author: {{ blog.author|title }} | Total Views: {{ blog.total_view }}</p>
+    </div>
+</div>
+<hr>
+{% endfor %}
+<hr>
+{% include 'blog/pagination.html' %}
+{% endblock header %}
+
+{% block about %}
+{% endblock about %}
+</body>
+</html>

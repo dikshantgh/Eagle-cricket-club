@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 from django.contrib import admin
 from django.urls import path, include
 # from django_private_chat import urls as django_private_chat_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('account/login/', auth_views.LoginView.as_view(redirect_authenticated_user=True), name='login'),
     path('account/', include('django.contrib.auth.urls')),
     path('', include('cricket.urls')),
+    path('blog/', include('blog.urls')),
 ]

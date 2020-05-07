@@ -23,28 +23,45 @@
   <!-- Template Main CSS File -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Maundy - v2.0.0
-  * Template URL: https://bootstrapmade.com/maundy-free-coming-soon-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
-
 <body>
-
-  <!-- ======= Header ======= -->
+ <!-- ======= Header ======= -->
+ {% block nav %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+      Welcome
+          {% if user.is_authenticated %}
+          {{ user.username|title }}
+          {% endif %}
+          <span class="sr-only">(current)</span>
+  </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+     <div class="navbar-nav">
+        <a class="nav-item nav-link" href="{% url 'blog:blog_list' %}">Blog</a>
+         <a class="nav-item nav-link" href="{% url 'cricket:game' %}">Game</a>
+        <a class="nav-item nav-link" href="{% url 'cricket:ground' %}">Ground</a>
+        {% if user.is_authenticated %}
+            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+         {% else %}
+            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+        {%  endif %}
+      </div>
+    </div>
+</nav>
+{% endblock nav %}
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex flex-column align-items-center">
 
       <a href="/"><img src="{% static 'img/mainlogo.png' %}" alt=""></a>
 <!--      <h1>Eagle Cricket Club</h1>-->
-      <h2>The oldest and original cricket club of campus tole. We believe in unity</h2>
+      <h2>The oldest cricket club of campus tole. We believe in unity</h2>
 
       {% block header %}
 
       {% endblock header %}
-
     </div>
   </header><!-- End #header -->
 
@@ -67,9 +84,9 @@
             <p class="description">Play games and refresh.</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box">
-            <div class="icon"><i class="icofont-chart-bar-graph"></i></div>
-            <h4 class="title"><a href="">Hall of fame</a></h4>
-            <p class="description">Since the formation of the club, the club went through many ups and downs</p>
+            <div class="icon"><i class="icofont-macbook"></i></div>
+            <h4 class="title"><a href="{% url 'blog:blog_list' %}">Blog</a></h4>
+            <p class="description">Read all the blogs by our team mates on different issues and topics.</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box">
             <div class="icon"><i class="icofont-earth"></i></div>
@@ -205,7 +222,6 @@
   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
-  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
   <script src="{% static 'vendor/jquery-countdown/jquery.countdown.min.js' %}"></script>
 
   <!-- Template Main JS File -->

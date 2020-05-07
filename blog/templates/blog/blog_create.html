@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Create Blog | Blog {% endblock title %}</title>
+</head>
+<body>
+{% block header %}
+<div class="d-flex justify-content-center">
+    <form class="subscribe-form" action="" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <hr>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+
+{% endblock header %}
+
+{% block about %}
+{% endblock about %}
+</body>
+</html>
