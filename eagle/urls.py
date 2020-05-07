@@ -20,7 +20,7 @@ from django.contrib import admin
 from django.urls import path, include
 # from django_private_chat import urls as django_private_chat_urls
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('12317/', admin.site.urls),
     path('account/login/', auth_views.LoginView.as_view(redirect_authenticated_user=True), name='login'),
     path('account/', include('django.contrib.auth.urls')),
     path('', include('cricket.urls')),

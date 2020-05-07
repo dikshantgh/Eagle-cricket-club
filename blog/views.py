@@ -5,7 +5,8 @@ from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.views.generic.edit import ModelFormMixin
 
 from blog.forms import BlogCreateForm, CommentCreateForm
@@ -40,7 +41,10 @@ class BlogDetailView(ModelFormMixin, DetailView):
         form = self.form_class(request.POST)
         if form.is_valid():
             # <process form cleaned data>
-            form.instance.commented_by = self.request.user
+            try:
+                form.instance.commented_by = self.request.user
+            except ValueError as login_first:
+                return HttpResponseRedirect(reverse('login'))
             form.instance.comment_text = form.cleaned_data['comment_text']
             form.instance.blog = self.get_object()
             form.save()
@@ -82,6 +86,11 @@ class SearchResultListView(ListView):
     def get_queryset(self):  # for search results
         query = self.request.GET.get('q')
         return Blog.objects.filter(Q(title__icontains=query) | Q(author__username__icontains=query))
+    
+    def get_context_data(self, **kwargs):
+        context = super(SearchResultListView, self).get_context_data(**kwargs)
+        context['search'] = self.request.GET.get('q')
+        return context
 
 
 class BlogByTagListView(ListView):
@@ -91,3 +100,8 @@ class BlogByTagListView(ListView):
 
     def get_queryset(self):
         return Blog.objects.filter(tag__slug=self.kwargs['tag_slug'])
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogByTagListView, self).get_context_data(**kwargs)
+        context['used_tag'] = self.kwargs['tag_slug']
+        return context

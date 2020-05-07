@@ -49,4 +49,4 @@ class Comment(models.Model):
         return f"{self.commented_by.username} commented on {self.blog}"
 
     class Meta:
-        ordering = ['-commented_date']
+        ordering = ['commented_date']
