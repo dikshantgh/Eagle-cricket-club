@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(1*jmg&-(cjqlo2&dhnnz4zymiehsx^)1064d&aca6mkqms1%+'
+SECRET_KEY = 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -112,11 +112,11 @@ WSGI_APPLICATION = 'eagle.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'xdtrclmu',
-        'USER': 'xdtrclmu',
-        'PASSWORD': 'CfcVFdtFD-6VuUC4SgDCLST2Sg2OhbBm',
-        'HOST': 'drona.db.elephantsql.com',
-        'PORT': '5432',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -178,9 +178,9 @@ LOGOUT_REDIRECT_URL = 'cricket:home'
 LOGIN_URL = 'login'
 # cloudinary
 cloudinary.config(
-    cloud_name = 'dyixiintg',
-    api_key = '683594715654573',
-    api_secret = '_8MuhosU6UWw1wF22oBwa4p3y3w'
+    cloud_name = '',
+    api_key = '',
+    api_secret = ''
 )
 
 
